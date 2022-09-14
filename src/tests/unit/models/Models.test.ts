@@ -23,7 +23,7 @@
 
 import { expect } from 'chai';
 import sinon from 'sinon';
-import CarModel from '../../../models/Car.ts';
+import CarModel from '../../../models/CarModel';
 import { ICar } from '../../../interfaces/ICar';
 import { CarMock } from '../mocks/CarMock';
 
