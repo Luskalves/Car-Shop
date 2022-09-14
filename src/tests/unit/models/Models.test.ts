@@ -4,9 +4,10 @@ import CarModel from '../../../models/CarModel';
 import { ICar } from '../../../interfaces/ICar';
 import { CarMock } from '../mocks/CarMock';
 
-const modelCar = new CarModel();
 
 describe('CarModel testes', () => {
+  const modelCar = new CarModel();
+
   describe('Create', () => {
     beforeEach(() => {
       sinon.stub(modelCar, 'create').resolves(CarMock)
