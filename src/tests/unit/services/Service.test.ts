@@ -5,10 +5,11 @@ import CarModel from '../../../models/CarModel';
 import CarService from '../../../services/CarService';
 import { CarMock, CarMockWithId } from '../mocks/CarMock';
 
-const carModel = new CarModel()
-const carService = new CarService(carModel);
 
 describe('ServiceTests', () => {
+  const carModel = new CarModel()
+  const carService = new CarService(carModel);
+
   describe('CarService', () => {
     beforeEach(() => {
       // sinon.stub(carService, 'create').resolves(CarMock);
