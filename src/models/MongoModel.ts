@@ -20,7 +20,7 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   async readOne(_id: string): Promise<T | null> {
-    if (!_id) return null;
+    if (!isValidObjectId(_id)) throw new NotFound('Object not found');
     return this._model.findById(_id);
   }
 
