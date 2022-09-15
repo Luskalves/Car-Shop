@@ -21,6 +21,23 @@ describe('CarModel testes', () => {
       const newCar = await modelCar.create(CarMock);
 
       expect(newCar).to.deep.equal(CarMock);
-    })
+    });
   });
+
+  describe('read', () => {
+    beforeEach(() => {
+      sinon.stub(modelCar, 'read').resolves([CarMock]);
+      sinon.stub(modelCar, 'readOne').resolves(CarMock);
+    });
+
+    afterEach(() => {
+      sinon.restore();
+    });
+
+    it('verificando se o read retorna um array', async () => {
+      const result = await modelCar.read();
+
+      expect(result).to.be.deep.equal([CarMock]);
+    });
+  })
 })
