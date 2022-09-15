@@ -1,14 +1,11 @@
 import { ErrorRequestHandler } from 'express';
 
 const errorMiddleware: ErrorRequestHandler = (err, _req, res, _next) => {
-  const { name, message } = err;
+  const { status, message } = err;
 
-  switch (name) {
-    case 'badRequest':
-      return res.status(400).json({ message });
-    default:
-      return res.status(500).json({ message: 'something got wrong!' });
-  }
+  if (!status) return res.status(500).json({ error: 'something got wrong!' });
+
+  return res.status(status).json({ error: message });
 };
 
 export default errorMiddleware;
