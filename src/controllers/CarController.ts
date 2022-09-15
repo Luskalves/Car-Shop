@@ -19,6 +19,13 @@ class CarController {
     res.status(201).json(newCar);
   }
 
+  public async readOne(req: Request, res: Response<ICar>) {
+    const { id } = req.params;
+    const car = await this._carService.readOne(id);
+
+    return res.status(200).json(car);
+  }
+
   public async update(req: Request, res: Response<ICar>) {
     const { id } = req.params;
     const obj = req.body;
