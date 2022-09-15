@@ -24,6 +24,16 @@ class CarService implements IService<ICar> {
     return newCar;
   }
 
+  public async readOne(id: string): Promise<ICar> {
+    if (id.length !== 24) throw new BadRequest('Id must have 24 hexadecimal characters');
+    
+    const car = await this.carModel.readOne(id);
+
+    if (!car) throw new NotFound('Object not found');
+
+    return car;
+  }
+
   public async updateOne(id: string, obj: unknown): Promise<ICar> {
     if (id.length !== 24) throw new BadRequest('Id must have 24 hexadecimal characters');
 
