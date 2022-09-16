@@ -71,10 +71,6 @@ describe('ServiceTests', () => {
   });
 
   describe('CarService - create', () => {
-    beforeEach(() => {
-      // sinon.stub(carService, 'create').resolves(CarMock);
-    })
-
     afterEach(() => {
       sinon.restore();
     })
@@ -146,7 +142,7 @@ describe('ServiceTests', () => {
       expect(err.status).to.be.equal(404)
     });
 
-    it('dispara um erro caso o id não exista', async () => {
+    it('Verifica se retorna o objeto com os valores atualizados', async () => {
       sinon.stub(carModel, 'update').resolves(CarMock);
 
       const update = await carService.updateOne('6323720f0f467abc1023d142', CarMock);
