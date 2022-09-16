@@ -58,57 +58,58 @@ describe('CarModel testes', () => {
       
       expect(car).to.be.deep.equal(CarMockWithId);
     });
+  });
 
-    describe('Update', () => {
-      beforeEach(() => {
-        sinon.stub(Model, 'findByIdAndUpdate').resolves(CarMockWithId);
-      });
-
-      afterEach(() => {
-        sinon.restore();
-      });
-
-      it('verifica se retorna um erro no update caso um id inválido seja inválido', async () => {
-        let err: any;
-  
-        try {
-          await modelCar.update('idInvalido', {} as ICar);
-        } catch (error) {
-          err = error;
-        };
-  
-        expect(err.status).to.be.equal(404);
-        expect(err.message).to.be.equal('Object not found');
-      });
-
-      it('verifica se um objeto é retornado caso um id válido seja passado no readOne', async () => {
-        const car = await modelCar.update('6323720f0f467abc1023d142', {} as ICar);
-        
-        expect(car).to.be.deep.equal(CarMockWithId);
-      });
+  describe('Update', () => {
+    beforeEach(() => {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(CarMockWithId);
     });
 
-    describe('Delete', () => {
-      beforeEach(() => {
-        sinon.stub(Model, 'findByIdAndDelete').resolves();
-      });
+    afterEach(() => {
+      sinon.restore();
+    });
 
-      afterEach(() => {
-        sinon.restore();
-      });
+    it('verifica se retorna um erro no update caso um id inválido seja inválido', async () => {
+      let err: any;
 
-      it('verifica se retorna um erro no delete caso um id inválido seja inválido', async () => {
-        let err: any;
-  
-        try {
-          await modelCar.delete('idInvalido');
-        } catch (error) {
-          err = error;
-        };
-  
-        expect(err.status).to.be.equal(404);
-        expect(err.message).to.be.equal('Object not found');
-      });
-    })
+      try {
+        await modelCar.update('idInvalido', {} as ICar);
+      } catch (error) {
+        err = error;
+      };
+
+      expect(err.status).to.be.equal(404);
+      expect(err.message).to.be.equal('Object not found');
+    });
+
+    it('verifica se um objeto é retornado caso um id válido seja passado no readOne', async () => {
+      const car = await modelCar.update('6323720f0f467abc1023d142', {} as ICar);
+      
+      expect(car).to.be.deep.equal(CarMockWithId);
+    });
+  });
+
+  describe('Delete', () => {
+    beforeEach(() => {
+      sinon.stub(Model, 'findByIdAndDelete').resolves();
+    });
+
+    afterEach(() => {
+      sinon.restore();
+    });
+
+    it('verifica se retorna um erro no delete caso um id inválido seja inválido', async () => {
+      sinon.stub(Model, 'findById').resolves(null);
+      let err: any;
+
+      try {
+        await modelCar.delete('idInvalido');
+      } catch (error) {
+        err = error;
+      };
+
+      expect(err.status).to.be.equal(404);
+      expect(err.message).to.be.equal('Object not found');
+    });
   });
 })
