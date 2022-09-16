@@ -3,6 +3,8 @@ import NotFound from '../errors/customErrors/NotFound';
 
 import { IModel } from '../interfaces/IModel';
 
+const ERROR_MESSAGE = 'Object not found';
+
 abstract class MongoModel<T> implements IModel<T> {
   protected _model: Model<T>;
 
@@ -20,12 +22,12 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   async readOne(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new NotFound('Object not found');
+    if (!isValidObjectId(_id)) throw new NotFound(ERROR_MESSAGE);
     return this._model.findById(_id);
   }
 
   async update(_id: string, obj: T): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new NotFound('Object not found');
+    if (!isValidObjectId(_id)) throw new NotFound(ERROR_MESSAGE);
 
     const updatedCar = await this._model.findByIdAndUpdate(
       { _id },
@@ -37,8 +39,8 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   async delete(_id: string): Promise<T | null> {
-    if (!_id) return null;
-    return this._model.findById(_id);
+    if (!isValidObjectId(_id)) throw new NotFound(ERROR_MESSAGE);
+    return this._model.findByIdAndDelete(_id);
   }
 }
 
