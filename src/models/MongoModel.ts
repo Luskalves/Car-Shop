@@ -39,7 +39,10 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   async delete(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new NotFound(ERROR_MESSAGE);
+    const exists = await this._model.findById(_id);
+    
+    if (!exists) throw new NotFound(ERROR_MESSAGE);
+
     return this._model.findByIdAndDelete(_id);
   }
 }
