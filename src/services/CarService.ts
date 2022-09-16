@@ -4,6 +4,8 @@ import { IModel } from '../interfaces/IModel';
 import BadRequest from '../errors/customErrors/BadRequest';
 import NotFound from '../errors/customErrors/NotFound';
 
+const ERROR_LENGTH_MESSAGE = 'Id must have 24 hexadecimal characters';
+
 class CarService implements IService<ICar> {
   constructor(private carModel: IModel<ICar>) {}
 
@@ -25,7 +27,7 @@ class CarService implements IService<ICar> {
   }
 
   public async readOne(id: string): Promise<ICar> {
-    if (id.length !== 24) throw new BadRequest('Id must have 24 hexadecimal characters');
+    if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
     
     const car = await this.carModel.readOne(id);
 
@@ -35,7 +37,7 @@ class CarService implements IService<ICar> {
   }
 
   public async updateOne(id: string, obj: unknown): Promise<ICar> {
-    if (id.length !== 24) throw new BadRequest('Id must have 24 hexadecimal characters');
+    if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
 
     const parsed = carZodSchema.safeParse(obj);
     if (!parsed.success) throw new BadRequest('Bad Request');
@@ -45,6 +47,12 @@ class CarService implements IService<ICar> {
     if (!updatedCar) throw new NotFound('Object not found');
 
     return updatedCar;
+  }
+
+  public async delete(id: string): Promise<void> {
+    if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
+    console.log('id service: ', id);
+    await this.carModel.delete(id);
   }
 }
 
