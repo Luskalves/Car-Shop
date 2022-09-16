@@ -83,19 +83,16 @@ describe('Testando os controllers', () => {
         res.status = sinon.stub().returns(res);
         res.json = sinon.stub().returns(res);
       });
+
+      it('verifica se um documento é atualizado', async() => {
+        req.params = { id: CarMockWithId._id }
+        req.body = CarMock;
+  
+        await carController.update(req, res);
+  
+        expect((res.status as sinon.SinonStub).calledWith(200));
+        expect((res.json as sinon.SinonStub).calledWith(CarMockWithId));
+      });
     });
-
-    // it('verifica se um documento é atualizado', async() => {
-    //   req.params = { id: CarMockWithId._id }
-    //   req.body = CarMock;
-
-    //   await carController.update(req, res);
-
-    //   const statusStub = res.status as sinon.SinonStub;
-    //   const jsonStub = res.json as sinon.SinonStub;
-
-    //   expect(statusStub.calledWith(200)).to.be.true;
-    //   expect(jsonStub.calledWith(CarMockWithId)).to.be.true;
-    // });
   })
 })
