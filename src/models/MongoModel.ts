@@ -27,7 +27,9 @@ abstract class MongoModel<T> implements IModel<T> {
   }
 
   async update(_id: string, obj: T): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new NotFound(ERROR_MESSAGE);
+    const exists = await this._model.findById(_id);
+    
+    if (!exists) throw new NotFound(ERROR_MESSAGE);
 
     const updatedCar = await this._model.findByIdAndUpdate(
       { _id },
