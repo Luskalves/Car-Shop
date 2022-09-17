@@ -49,9 +49,9 @@ class CarService implements IService<ICar> {
     return updatedCar;
   }
 
-  public async delete(id: string): Promise<void> {
+  public async delete(id: string): Promise< ICar | null> {
     if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
-    await this.carModel.delete(id);
+    return this.carModel.delete(id);
   }
 }
 

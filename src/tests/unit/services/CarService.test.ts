@@ -148,6 +148,32 @@ describe('ServiceTests', () => {
       const update = await carService.updateOne('6323720f0f467abc1023d142', CarMock);
 
       expect(update).to.be.deep.equal(CarMock);
+    });
+  });
+
+  describe('CarService - Delete', () => {
+    afterEach(() => {
+      sinon.restore();
+    });
+
+    it('dispara um erro caso o id não tenha o tamanho correto', async () => {
+      let err: any;
+
+      try {
+        await carService.delete('idErrado');
+      } catch (error) {
+        err = error;
+      }
+
+      expect(err.status).to.be.equal(400);
+      expect(err.message).to.be.equal('Id must have 24 hexadecimal characters');
+    });
+
+    it('verifica se retorna nulo ao fazer um delete com sucesso', async () => {
+      sinon.stub(carModel, 'delete').resolves(CarMockWithId)
+      const result = await carModel.delete('6323720f0f467abc1023d142');
+
+      expect(result).to.be.equal(CarMockWithId)
     })
   })
 })
