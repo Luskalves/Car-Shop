@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Model } from 'mongoose';
+import { model, Model } from 'mongoose';
 import sinon from 'sinon';
 import { ICar } from '../../../interfaces/ICar';
 import CarModel from '../../../models/CarModel';
@@ -70,10 +70,11 @@ describe('CarModel testes', () => {
     });
 
     it('verifica se retorna um erro no update caso um id inválido seja inválido', async () => {
+      sinon.stub(Model, 'findById').resolves(null);
       let err: any;
 
       try {
-        await modelCar.update('idInvalido', {} as ICar);
+        await modelCar.update('999999999999999999999999', {} as ICar);
       } catch (error) {
         err = error;
       };
@@ -83,6 +84,7 @@ describe('CarModel testes', () => {
     });
 
     it('verifica se um objeto é retornado caso um id válido seja passado no readOne', async () => {
+      sinon.stub(Model, 'findById').resolves(true);
       const car = await modelCar.update('6323720f0f467abc1023d142', {} as ICar);
       
       expect(car).to.be.deep.equal(CarMockWithId);
@@ -91,7 +93,7 @@ describe('CarModel testes', () => {
 
   describe('Delete', () => {
     beforeEach(() => {
-      sinon.stub(Model, 'findByIdAndDelete').resolves();
+      sinon.stub(Model, 'findByIdAndDelete').resolves(null);
     });
 
     afterEach(() => {
@@ -111,5 +113,13 @@ describe('CarModel testes', () => {
       expect(err.status).to.be.equal(404);
       expect(err.message).to.be.equal('Object not found');
     });
+
+    it('verifica se retorna nulo apos um delete com sucesso', async () => {
+      sinon.stub(Model, 'findById').resolves(true);
+
+      const result = await modelCar.delete('6323720f0f467abc1023d142');
+
+      expect(result).to.be.equal(null);
+    })
   });
 })
