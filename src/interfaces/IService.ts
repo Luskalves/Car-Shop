@@ -3,5 +3,5 @@ export interface IService<T> {
   create(obj: unknown): Promise<T>,
   readOne(id: string): Promise<T>,
   updateOne(id: string, obj: unknown): Promise<T>,
-  delete(id: string): Promise<T | null>,
+  delete(id: string): Promise<void>,
 }
