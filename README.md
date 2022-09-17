@@ -60,4 +60,36 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 * Faça alguma requisição específicada nos arquivos ```./src/routes```
 * Veja o resultado da requisição 
 
+<h2> Exemplos de Requisição e Retorno </h3>
+
+<h3> Requisição do tipo get </h3>
+
+Requisição na rota ```http://localhost:3001/cars/```.
+
+Exemplo de retorno: 
+
+```
+[
+    {
+        "_id": "6325eb91a7d87fcc4c62be25",
+        "doorsQty": 2,
+        "seatsQty": 5,
+        "model": "fusca",
+        "buyValue": 3500,
+        "color": "Red",
+        "year": 1963
+    },
+    {
+        "_id": "6325ebbea7d87fcc4c62be27",
+        "doorsQty": 4,
+        "seatsQty": 5,
+        "model": "Honda Civic",
+        "buyValue": 3500,
+        "color": "Black",
+        "status": true,
+        "year": 2020
+    },
+    ...
+]
+```
 
