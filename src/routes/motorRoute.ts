@@ -14,5 +14,6 @@ motorRoute.get('/', (req, res) => controller.read(req, res));
 motorRoute.post('/', (req, res) => controller.create(req, res));
 motorRoute.get('/:id', (req, res) => controller.readOne(req, res));
 motorRoute.put('/:id', (req, res) => controller.update(req, res));
+motorRoute.delete('/:id', (req, res) => controller.delete(req, res));
 
 export default motorRoute;
