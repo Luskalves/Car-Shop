@@ -12,5 +12,6 @@ const controller = new MotorController(service);
 
 motorRoute.get('/', (req, res) => controller.read(req, res));
 motorRoute.post('/', (req, res) => controller.create(req, res));
+motorRoute.get('/:id', (req, res) => controller.readOne(req, res));
 
 export default motorRoute;
