@@ -26,6 +26,15 @@ class MotorController {
 
     res.status(200).json(motor);
   }
+
+  public async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const obj = req.body;
+
+    const updatedMotor = await this._motorService.updateOne(id, obj);
+
+    res.status(200).json(updatedMotor);
+  }
 }
 
 export default MotorController;
