@@ -66,7 +66,7 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 
 ⚠️ É necessário popular o banco antes ⚠️
 
-Requisição na rota ```http://localhost:3001/cars/```.
+Requisição na rota: ```http://localhost:3001/cars/```.
 
 Exemplo de retorno: 
 
