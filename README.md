@@ -63,7 +63,9 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 <h2> Exemplos de Requisição e Retorno </h3>
 
 <h3> Requisição do tipo get </h3>
+
 ⚠️É necessário popular o banco antes⚠️
+
 Requisição na rota ```http://localhost:3001/cars/```.
 
 Exemplo de retorno: 
