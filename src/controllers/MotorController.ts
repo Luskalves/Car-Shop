@@ -19,6 +19,13 @@ class MotorController {
 
     res.status(201).json(newMotor);
   }
+
+  public async readOne(req: Request, res: Response) {
+    const { id } = req.params;
+    const motor = await this._motorService.readOne(id);
+
+    res.status(200).json(motor);
+  }
 }
 
 export default MotorController;
