@@ -35,6 +35,14 @@ class MotorController {
 
     res.status(200).json(updatedMotor);
   }
+
+  public async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    await this._motorService.delete(id);
+
+    res.sendStatus(204);
+  }
 }
 
 export default MotorController;
