@@ -5,6 +5,12 @@ import { IService } from '../interfaces/IService';
 class MotorController {
   constructor(private _motorService: IService<IMotorcycle>) {}
 
+  public async read(_req: Request, res: Response) {
+    const motors = await this._motorService.read();
+
+    return res.status(200).json(motors);
+  }
+
   public async create(req: Request, res: Response) {
     const obj = req.body;
     console.log('aqui');
