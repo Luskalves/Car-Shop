@@ -23,6 +23,7 @@ class MotorcycleService implements IService<IMotorcycle> {
 
     return this._motorModel.create(parsed.data as IMotorcycle);
   }
+
   public async readOne(id: string): Promise<IMotorcycle> {
     if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
     
@@ -32,6 +33,7 @@ class MotorcycleService implements IService<IMotorcycle> {
 
     return motor;
   }
+  
   public async updateOne(id: string, obj: unknown): Promise<IMotorcycle> {
     if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
 
