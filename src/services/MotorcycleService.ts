@@ -33,7 +33,7 @@ class MotorcycleService implements IService<IMotorcycle> {
 
     return motor;
   }
-  
+
   public async updateOne(id: string, obj: unknown): Promise<IMotorcycle> {
     if (id.length !== 24) throw new BadRequest(ERROR_LENGTH_MESSAGE);
 
@@ -41,7 +41,7 @@ class MotorcycleService implements IService<IMotorcycle> {
 
     if (!parsed.success) throw new BadRequest(BAD_REQUEST);
 
-    const updatedMotor = await this._motorModel.update(id, parsed.data as IMotorcycle);
+    const updatedMotor = await this._motorModel.update(id, parsed.data);
 
     if (!updatedMotor) throw new BadRequest(BAD_REQUEST);
 
