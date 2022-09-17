@@ -52,7 +52,7 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 
 <h1> Como usar o projeto </h1>
 
-⚠️ Atenção ⚠️ recomendo utilizar algum programa como o Postman ou extenção do vscode como o Thunder Client para fazer as requisições para a api
+⚠️ Atenção ⚠️ recomendo utilizar algum programa como o Postman ou extenção do vscode como o Thunder Client para fazer as requisições para a api.
 
 * Clone o projeto.
 * Abra a pasta do projeto e instale as dependências com o ```npm install```.
@@ -64,7 +64,7 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 
 <h3> Requisição do tipo get </h3>
 
-⚠️É necessário popular o banco antes⚠️
+⚠️ É necessário popular o banco antes ⚠️
 
 Requisição na rota ```http://localhost:3001/cars/```.
 
