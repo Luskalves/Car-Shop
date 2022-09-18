@@ -6,7 +6,7 @@
 
 Este é um projeto da <a href="https://www.betrybe.com/">Trybe</a> que eu desenvolvi e tinha como objetivo a criação de uma API CRUD para compra de veículos como carros e motos. Onde seria possível adcionar novos veículos, listar todos, buscar por um específico e deletar um veículo do banco de dados.
 
-<h1> Tecnologias utilizadas </h1>
+<h1> Tecnologias utilizadas 🧑🏿‍💻 </h1>
 
 Durante o desenvolvimento do projeto utilizei as tecnologias a baixo:
 
@@ -23,12 +23,12 @@ Durante o desenvolvimento do projeto utilizei as tecnologias a baixo:
 * Chai ✅
 * Ts-Node ✅
 
-<h3 style={}> Código já preparado pela trybe  </h3>
+<h3> Código já preparado pela trybe ⚙️ </h3>
 
   A <a href="https://www.betrybe.com/">Trybe</a> já prepara o ambiente para que possamos apenas nos concentrar em desenvolver o necessário. Arquivos de configuração como o ```package.json```, ```Dockerfile``` e ```nyc.config.js``` são alguns dos exemplos de arquivos já configurados pela ```Trybe```.
 
 
-<h1>O que desenvolvi</h1>
+<h1>O que desenvolvi 🧑🏿‍💻</h1>
 
 Na pasta ```./src``` estão todos os arquivos e pasta de códigos que precisei escrever com exceção dos arquivos ```index.ts``` e ```app.ts``` que não precisei cria-los apenas adicionar as rotas que eu iria utilizar no ``app.ts``` e descomentar o arquivo ```index.ts```.
 
@@ -57,7 +57,7 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 * Clone o projeto.
 * Abra a pasta do projeto e instale as dependências com o ```npm install```.
 * Use o comando ```docker-compose up -d````para iniciar os containers.
-* use o comando ```npm run dev``` para iniciar o servidor.
+* use o comando ```docker exec -d car_shop npm run dev``` para iniciar o servidor dentro do container.
 * Faça alguma requisição para uma rota que exista nos arquivos ```./src/routes```
 * Veja o resultado da requisição.
 
