@@ -56,9 +56,10 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 
 * Clone o projeto.
 * Abra a pasta do projeto e instale as dependências com o ```npm install```.
-* use o comando ```ǹpm run dev``` para iniciar o servidor.
-* Faça alguma requisição específicada nos arquivos ```./src/routes```
-* Veja o resultado da requisição 
+* Use o comando ```docker-compose up -d````para iniciar os containers.
+* use o comando ```npm run dev``` para iniciar o servidor.
+* Faça alguma requisição para uma rota que exista nos arquivos ```./src/routes```
+* Veja o resultado da requisição.
 
 <h2> Exemplos de Requisição e Retorno </h3>
 
