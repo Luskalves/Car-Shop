@@ -56,7 +56,7 @@ Na pasta ```/src/models``` estão os models de carros e motos, são os responsá
 
 * Clone o projeto.
 * Abra a pasta do projeto e instale as dependências com o ```npm install```.
-* Use o comando ```docker-compose up -d````para iniciar os containers.
+* Use o comando ```docker-compose up -d``` para iniciar os containers.
 * use o comando ```docker exec -d car_shop npm run dev``` para iniciar o servidor dentro do container.
 * Faça alguma requisição para uma rota que exista nos arquivos ```./src/routes```
 * Veja o resultado da requisição.
